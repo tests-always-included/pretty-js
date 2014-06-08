@@ -1,0 +1,48 @@
+{
+    "name": "pretty-js",
+    "version": "0.1.0",
+    "private": true,
+    "description": "Beautify / pretty print JavaScript and JSON",
+    "author": "Tyler Akins <fidian@rumkin.com>",
+    "homepage": "https://github.com/tests-always-included/pretty-js",
+    "bugs": {
+        "url": "https://github.com/tests-always-included/pretty-js/issues"
+    },
+    "contributors": [
+        "Tyler Akins <fidian@rumkin.com> (http://rumkin.com)"
+    ],
+    "main": "lib/pretty-js.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tests-always-included/pretty-js.git"
+    },
+    "keywords": [
+        "beautify",
+        "prettyprint",
+        "pretty",
+        "print",
+        "javascript",
+        "js"
+    ],
+    "dependencies": {
+        "complexion": "*",
+        "complexion-js": "*",
+        "option-parser": "*",
+        "process-files": "*"
+    },
+    "devDependencies": {
+        "fid-umd": ">=1.0.8",
+        "grunt": "~0.4.1",
+        "grunt-cli": "*",
+        "grunt-jasmine-node": "*",
+        "grunt-jslint": "*"
+    },
+    "license": "MIT",
+    "scripts": {
+        "test": "grunt test",
+        "umd": "fid-umd lib/*.js"
+    },
+    "bin": {
+        "prettyjs": "bin/prettyjs.js"
+    }
+}
