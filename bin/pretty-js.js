@@ -15,7 +15,8 @@ options = {
     inPlace: false,
     jslint: false,
     newline: "\n",
-    quoteProperties: false
+    quoteProperties: false,
+    verbose: false
 };
 parser = new OptionParser();
 
@@ -152,6 +153,11 @@ parser.addOption('q', 'quote-properties', 'How should object literals list their
         }
     });
 
+parser.addOption('v', 'verbose', 'Display filenames on stderr that are being processed.  Useful when combined with --in-place.')
+    .action(function () {
+        options.verbose = true;
+    });
+
 unparsed = parser.parse();
 
 if (options.debug) {
@@ -181,6 +187,10 @@ processFiles(unparsed, function (err, data, filename, done) {
 
     if (options.debug) {
         console.error('Size after', pretty.length);
+    }
+
+    if (options.verbose) {
+        console.error(filename);
     }
 
     if (options.inPlace && filename !== '-') {
