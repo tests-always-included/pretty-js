@@ -1,6 +1,7 @@
 #!/usr/bin/env node
-var OptionParser, options, parser, prettyJs, processFiles, unparsed;
+var fs, OptionParser, options, parser, prettyJs, processFiles, unparsed;
 
+fs = require('fs');
 OptionParser = require('option-parser');
 prettyJs = require('../');
 processFiles = require('process-files');
@@ -11,6 +12,7 @@ options = {
     convertStrings: 'double',
     elseNewline: false,
     indent: '    ',
+    inPlace: false,
     jslint: false,
     newline: "\n",
     quoteProperties: false
@@ -79,7 +81,12 @@ parser.addOption('e', 'else-newline', 'Turn on an extra newline before "else" an
 parser.addOption('h', 'help', 'This help message.')
     .action(parser.helpAction());
 
-parser.addOption('i', 'indent', 'What to use for a single indentation level.  Defaults to four spaces.')
+parser.addOption('i', 'in-place', 'Write out files on top of originals after pretty printing.')
+    .action(function () {
+        options.inPlace = true;
+    });
+
+parser.addOption('s', 'indent', 'What to use for a single indentation level.  Defaults to four spaces.')
     .argument('STRING')
     .action(function (value) {
         options.indent = value;
@@ -152,7 +159,9 @@ if (options.debug) {
     console.error('Files', unparsed);
 }
 
-processFiles(unparsed, function (err, data, filename) {
+processFiles(unparsed, function (err, data, filename, done) {
+    var pretty;
+
     if (err) {
         if (err.code === 'ENOENT') {
             console.error('File does not exist: ' + err.filename);
@@ -165,7 +174,37 @@ processFiles(unparsed, function (err, data, filename) {
 
     if (options.debug) {
         console.error('Successfully read', filename);
+        console.error('Size before', data.length);
     }
 
-    console.log(prettyJs(data, options));
+    pretty = prettyJs(data, options);
+
+    if (options.debug) {
+        console.error('Size after', pretty.length);
+    }
+
+    if (options.inPlace && filename !== '-') {
+        if (options.debug) {
+            console.log('Writing', filename);
+        }
+
+        fs.writeFile(filename, pretty, function (err) {
+            if (err) {
+                console.error(err);
+            }
+
+            if (options.debug) {
+                console.log('Done writing file');
+            }
+
+            done();
+        });
+    } else {
+        if (options.debug) {
+            console.log('Writing to console');
+        }
+
+        console.log(pretty);
+        done();
+    }
 });
