@@ -42,6 +42,6 @@
         "umd": "fid-umd lib/*.js"
     },
     "bin": {
-        "prettyjs": "bin/prettyjs.js"
+        "pretty-js": "bin/pretty-js.js"
     }
 }
