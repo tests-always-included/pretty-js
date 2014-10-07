@@ -49,10 +49,11 @@ parser.addOption('s', 'comment-space', 'Indentation string to add before single-
     });
 
 parser.addOption('c', 'convert-strings', 'Convert strings to use double or single quotes.  Allowed values are "double", "single" and "preserve".  Defaults to "double".')
+    .argument('ACTION')
     .validation(function (value) {
         value = value.toLowerCase();
 
-        if (value !== 'double' || value !== 'single' || value !== 'preserve') {
+        if (value !== 'double' && value !== 'single' && value !== 'preserve') {
             return 'Convert strings must be double, single or preserve.';
         }
     })
