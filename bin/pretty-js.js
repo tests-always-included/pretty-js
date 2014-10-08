@@ -87,7 +87,7 @@ parser.addOption('i', 'in-place', 'Write out files on top of originals after pre
         options.inPlace = true;
     });
 
-parser.addOption('s', 'indent', 'What to use for a single indentation level.  Defaults to four spaces.')
+parser.addOption('t', 'indent', 'What to use for a single indentation level.  Defaults to four spaces.')
     .argument('STRING')
     .action(function (value) {
         options.indent = value;
@@ -195,7 +195,7 @@ processFiles(unparsed, function (err, data, filename, done) {
 
     if (options.inPlace && filename !== '-') {
         if (options.debug) {
-            console.log('Writing', filename);
+            console.error('Writing', filename);
         }
 
         fs.writeFile(filename, pretty, function (err) {
@@ -204,14 +204,14 @@ processFiles(unparsed, function (err, data, filename, done) {
             }
 
             if (options.debug) {
-                console.log('Done writing file');
+                console.error('Done writing file');
             }
 
             done();
         });
     } else {
         if (options.debug) {
-            console.log('Writing to console');
+            console.error('Writing to console');
         }
 
         console.log(pretty);
