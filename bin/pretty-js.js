@@ -19,6 +19,7 @@ options = {
     verbose: false
 };
 parser = new OptionParser();
+parser.programName('pretty-js');
 
 parser.addOption('b', 'bom', 'Byte-order-mark handling.  "add" will always add one, "remove" removes one if there is any, "preserve" will keep it if it exists.  "remove" is the default.')
     .argument('ACTION')
