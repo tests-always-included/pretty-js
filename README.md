@@ -29,6 +29,39 @@ If you'd rather call the library directly, then list "pretty-js" as a dependency
     npm install --save-dev pretty-js
 
 
+Running via Command Line
+------------------------
+
+Did you install this script globally?  (`npm install -g pretty-js`)  If so, you now have the boundless power of the JavaScript pretty printer in a convenient command-line interface.
+
+    pretty-js [options] [filename ...]
+
+Here are a few typical ways to run the pretty printer.
+
+    # Beautify ugly.js
+    pretty-js ugly.js > pretty.js
+
+    # Format JSON
+    pretty-js -j ugly.json > pretty.json
+
+    # Use Windows linefeeds and jslint-compatible rules
+    # Overwrites original file with formatted content
+    pretty-js --newline CRLF --jslint --in-place source-code.js
+
+    # Rewrite all JavaScript files and display the name of the
+    # file being changed
+    pretty-js -i -v *.js
+
+There's a lot of options and you can control all of the aspects of the pretty printer.  Use `pretty-js --help` for a lot of information.  Reading from stdin is an option as well, thanks to [processFiles].  All of the following read from stdin and write to stdout.
+
+    cat ugly.js | pretty-js > pretty.js
+
+    cat ugly.js | pretty-js - > pretty.js
+
+    # The "in-place" editing of stdin just writes to stdout
+    cat ugly.js | pretty-js -i > pretty.js
+
+
 Using the API
 -------------
 
@@ -132,22 +165,6 @@ Wrap object properties in quotes or remove them.
 
 Defaults to false.
 
-
-Running via Command Line
-------------------------
-
-Did you install this script globally?  (`npm install -g pretty-js`)  If so, you now have the boundless power of the JavaScript pretty printer in a convenient command-line interface.
-
-    pretty-js [options] [filename ...]
-
-There's a lot of options and you can control all of the aspects of the pretty printer.  Use `pretty-js --help` for a lot of information.
-
-Reading from stdin is an option as well, thanks to [processFiles].  Both of the following are options for you.
-
-    cat some-file.js | pretty-js > formatted-file.js
-    
-    cat some-file.js | pretty-js - > formatted-file.js
-    
 
 Development
 -----------
