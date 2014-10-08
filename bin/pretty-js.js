@@ -107,6 +107,7 @@ parser.addOption('j', 'json', 'Enable JSON-compatible rules.')
     });
 
 parser.addOption('n', 'newline', 'What to use for newlines.  Must be one of "cr", "lf", or "crlf" (case insensitive).  The default is "cr" for just a carriage return.')
+    .argument('CODE')
     .validation(function (value) {
         if (!value.match(/^(cr|lf|crlf)$/i)) {
             return 'Must use cr, lf or crlf for the newlines';
@@ -114,15 +115,15 @@ parser.addOption('n', 'newline', 'What to use for newlines.  Must be one of "cr"
     })
     .action(function (value) {
         switch (value.toUpperCase()) {
-        case 'cr':
+        case 'CR':
             options.newline = '\r';
             break;
 
-        case 'lf':
+        case 'LF':
             options.newline = '\n';
             break;
 
-        case 'crlf':
+        case 'CRLF':
             options.newline = '\r\n';
             break;
         }
