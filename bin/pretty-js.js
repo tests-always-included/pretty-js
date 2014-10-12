@@ -1,6 +1,21 @@
 #!/usr/bin/env node
-var fs, OptionParser, options, parser, prettyJs, processFiles, unparsed;
+var fs, OptionParser, options, parser, prettyJs, processFiles, startTime, unparsed;
 
+function debug() {
+    var args;
+
+    if (options.debug) {
+        args = [].slice.call(arguments);
+
+        if (options.debug > 1) {
+            args.unshift((new Date()) - startTime);
+        }
+
+        console.error.apply(null, args);
+    }
+}
+
+startTime = new Date();
 fs = require('fs');
 OptionParser = require('option-parser');
 prettyJs = require('../');
@@ -10,6 +25,7 @@ options = {
     bom: false,
     commentSpace: '  ',
     convertStrings: 'double',
+    debug: 0,
     elseNewline: false,
     indent: '    ',
     inPlace: false,
@@ -70,9 +86,9 @@ parser.addOption('c', 'convert-strings', 'Convert strings to use double or singl
         }
     });
 
-parser.addOption('d', 'debug', 'Enable debugging information')
+parser.addOption('d', 'debug', 'Enable debugging information (specify twice for timing information in milliseconds)')
     .action(function () {
-        options.debug = true;
+        options.debug += 1;
     });
 
 parser.addOption('e', 'else-newline', 'Turn on an extra newline before "else" and "catch".')
@@ -162,10 +178,8 @@ parser.addOption('v', 'verbose', 'Display filenames on stderr that are being pro
 
 unparsed = parser.parse();
 
-if (options.debug) {
-    console.error('Options', options);
-    console.error('Files', unparsed);
-}
+debug('Options', options);
+debug('Files', unparsed);
 
 processFiles(unparsed, function (err, data, filename, done) {
     var pretty;
@@ -180,43 +194,30 @@ processFiles(unparsed, function (err, data, filename, done) {
         return;
     }
 
-    if (options.debug) {
-        console.error('Successfully read', filename);
-        console.error('Size before', data.length);
-    }
-
+    debug('Successfully read', filename);
+    debug('Size before', data.length);
     pretty = prettyJs(data, options);
-
-    if (options.debug) {
-        console.error('Size after', pretty.length);
-    }
+    debug('Size after', pretty.length);
 
     if (options.verbose) {
         console.error(filename);
     }
 
     if (options.inPlace && filename !== '-') {
-        if (options.debug) {
-            console.error('Writing', filename);
-        }
-
+        debug('Writing', filename);
         fs.writeFile(filename, pretty, function (err) {
             if (err) {
                 console.error(err);
             }
 
-            if (options.debug) {
-                console.error('Done writing file');
-            }
-
+            debug('Done writing file');
             done();
         });
     } else {
-        if (options.debug) {
-            console.error('Writing to console');
-        }
-
+        debug('Writing to console');
         console.log(pretty);
         done();
     }
+}, function () {
+    debug('Done processing all files');
 });

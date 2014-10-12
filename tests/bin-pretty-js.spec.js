@@ -4,6 +4,12 @@
 
     var childProcess;
 
+    /**
+     * Run a child process to test command-line flags
+     *
+     * @param {string} args Automatically has -d added
+     * @param {Function} callback Where to send stderr and stdout
+     */
     function runCmd(args, callback) {
         var cmd;
 
@@ -14,10 +20,21 @@
         });
     }
 
+    /**
+     * Run the command with an argument and check if the output contains
+     * the text specified.
+     *
+     * @param {string} arg
+     * @param {(string|RegExp)} text
+     */
     function argumentRunner(arg, text) {
         it('handles ' + JSON.stringify(arg), function (done) {
             runCmd(arg, function (result) {
-                expect(result).toContain(text);
+                if (typeof text === 'string') {
+                    expect(result).toContain(text);
+                } else {
+                    expect(result).toMatch(text);
+                }
                 done();
             });
         });
@@ -60,6 +77,13 @@
             argumentRunner('--convert-strings double', 'convertStrings: \'double\'');
             argumentRunner('--convert-strings="single"', 'convertStrings: \'single\'');
             argumentRunner('-c preserve', 'convertStrings: null');
+        });
+        describe('debug', function () {
+            // "-d" is already passed once by argumentRunner()
+            argumentRunner('', 'debug: 1');
+            argumentRunner('', /^Options /);
+            argumentRunner('-d', 'debug: 2');
+            argumentRunner('-d', /^[0-9]+ 'Options' /);
         });
         describe('elseNewline', function () {
             argumentRunner('', 'elseNewline: false');
