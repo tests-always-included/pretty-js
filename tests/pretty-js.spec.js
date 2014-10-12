@@ -44,6 +44,17 @@
                 expect(prettyJs('if(x)y();else z()')).toEqual('if (x) y();\nelse z()');
             });
         });
+        describe('keyword handling', function () {
+            it('treats keywords as properties', function () {
+                expect(prettyJs('x.default().return().toString()')).toEqual('x.default().return().toString()');
+            });
+            it('builds objects with keywords as properties', function () {
+                expect(prettyJs('{case:1,catch:1,default:1,toString:1}')).toEqual('{\n    case: 1,\n    catch: 1,\n    default: 1,\n    toString: 1\n}');
+            });
+            it('still works with switches', function () {
+                expect(prettyJs('switch(x){case:1,default:1}')).toEqual('switch (x) {\n    case:\n        1,\n\n    default:\n        1\n}');
+            });
+        });
         describe('return/throw/try/while', function () {
             it('adds a newline before return', function () {
                 expect(prettyJs('x();return y;')).toEqual('x();\n\nreturn y;');

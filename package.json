@@ -24,8 +24,8 @@
         "js"
     ],
     "dependencies": {
-        "complexion": "*",
-        "complexion-js": "*",
+        "complexion": "~0.1.3",
+        "complexion-js": "~0.1.3",
         "option-parser": "*",
         "process-files": "*"
     },
