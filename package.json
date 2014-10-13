@@ -1,6 +1,6 @@
 {
     "name": "pretty-js",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "description": "Beautify / pretty print JavaScript and JSON",
     "author": "Tyler Akins <fidian@rumkin.com>",
     "homepage": "https://github.com/tests-always-included/pretty-js",
