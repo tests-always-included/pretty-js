@@ -165,6 +165,15 @@ Wrap object properties in quotes or remove them.
 
 Defaults to false.
 
+### trailingNewline (boolean)
+
+Adds or removes newline at end of file.
+
+* `true`: Always add newline to end of file
+* `false`: Always remove newline from end of file
+
+Defaults to false.
+
 
 Development
 -----------
