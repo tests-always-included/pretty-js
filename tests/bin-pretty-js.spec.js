@@ -152,6 +152,11 @@
             argumentRunner('--quote-properties remove', 'quoteProperties: false');
             argumentRunner('--quote-properties preserve', 'quoteProperties: null');
         });
+        describe('trailingNewline', function () {
+            argumentRunner('', 'trailingNewline: false');
+            argumentRunner('-f', 'trailingNewline: true');
+            argumentRunner('--trailing-newline', 'trailingNewline: true');
+        });
         describe('verbose', function () {
             argumentRunner('', 'verbose: false');
             argumentRunner('-v', 'verbose: true');

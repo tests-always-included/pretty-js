@@ -174,5 +174,31 @@
                 })).toEqual("{\n    a: 1,\n    b: 2\n}");
             });
         });
+        describe('trailingNewline', function () {
+            it('can add trailing newline', function () {
+                expect(prettyJs("function () {console.log(\"hello world\");}", {
+                    trailingNewline: true
+                })).toEqual("function () {\n    console.log(\"hello world\");\n}\n");
+            });
+            it('can remove trailing newline', function () {
+                expect(prettyJs("function () {console.log(\"hello world\");}\n", {
+                    trailingNewline: false
+                })).toEqual("function () {\n    console.log(\"hello world\");\n}");
+            });
+            it('will remove by default', function () {
+                expect(prettyJs("function () {console.log(\"hello world\");}\n", {
+                })).toEqual("function () {\n    console.log(\"hello world\");\n}");
+            });
+            it('adds newline for single line input', function () {
+                expect(prettyJs("true", {
+                    trailingNewline: true
+                })).toEqual("true\n");
+            });
+            it('doesn\'t add multiple newlines', function () {
+                expect(prettyJs("true\n", {
+                    trailingNewline: true
+                })).toEqual("true\n");
+            });
+        });
     });
 }());

@@ -32,6 +32,7 @@ options = {
     jslint: false,
     newline: "\n",
     quoteProperties: false,
+    trailingNewline: false,
     verbose: false
 };
 parser = new OptionParser();
@@ -169,6 +170,11 @@ parser.addOption('q', 'quote-properties', 'How should object literals list their
             options.quoteProperties = false;
             break;
         }
+    });
+
+parser.addOption('f', 'trailing-newline', 'Enable adding newline to end of file.')
+    .action(function () {
+        options.trailingNewline = true;
     });
 
 parser.addOption('v', 'verbose', 'Display filenames on stderr that are being processed.  Useful when combined with --in-place.')
