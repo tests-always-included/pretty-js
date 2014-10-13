@@ -189,6 +189,16 @@
                 expect(prettyJs("function () {console.log(\"hello world\");}\n", {
                 })).toEqual("function () {\n    console.log(\"hello world\");\n}");
             });
+            it('adds newline for single line input', function () {
+                expect(prettyJs("true", {
+                    trailingNewline: true
+                })).toEqual("true\n");
+            });
+            it('doesn\'t add multiple newlines', function () {
+                expect(prettyJs("true\n", {
+                    trailingNewline: true
+                })).toEqual("true\n");
+            });
         });
     });
 }());
