@@ -252,15 +252,15 @@
         });
         describe('strings', function () {
             it('converts to double quotes with escaping', function () {
-                expect(prettyJs('\'\\\'"\\\'"\\\'"\\\'\'', {
+                expect(prettyJs('\'\\\\\\\'"\\\'"\\\'"\\\'\'', {
                     convertStrings: "double"
-                })).toEqual('"\'\\"\'\\"\'\\"\'"');
+                })).toEqual('"\\\\\'\\"\'\\"\'\\"\'"');
             });
             it('converts to double quotes with escaping', function () {
                 /*global console*/
-                expect(prettyJs("\"\\\"'\\\"'\\\"'\\\"\"", {
+                expect(prettyJs("\"\\\\\\\"'\\\"'\\\"'\\\"\"", {
                     convertStrings: "single"
-                })).toEqual("'\"\\'\"\\'\"\\'\"'");
+                })).toEqual("'\\\\\"\\'\"\\'\"\\'\"'");
             });
         });
     });
