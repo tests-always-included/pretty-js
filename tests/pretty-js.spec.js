@@ -250,5 +250,18 @@
                 expect(prettyJs('x() // one\n//two')).toEqual('x()  // one\n\n//two');
             });
         });
+        describe('strings', function () {
+            it('converts to double quotes with escaping', function () {
+                expect(prettyJs('\'\\\'"\\\'"\\\'"\\\'\'', {
+                    convertStrings: "double"
+                })).toEqual('"\'\\"\'\\"\'\\"\'"');
+            });
+            it('converts to double quotes with escaping', function () {
+                /*global console*/
+                expect(prettyJs("\"\\\"'\\\"'\\\"'\\\"\"", {
+                    convertStrings: "single"
+                })).toEqual("'\"\\'\"\\'\"\\'\"'");
+            });
+        });
     });
 }());
