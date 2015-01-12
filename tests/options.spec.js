@@ -140,6 +140,46 @@
                 })).toEqual("a();\r\nb();");
             });
         });
+        describe('noSpaceAfterIf', function () {
+            it('adds a space by default', function () {
+                expect(prettyJs("if()")).toEqual("if ()");
+            });
+            it("removes a space", function () {
+                expect(prettyJs("if ()", {
+                    noSpaceAfterIf: true
+                })).toEqual("if()");
+            });
+        });
+        describe('noSpaceAfterFor', function () {
+            it('adds a space by default', function () {
+                expect(prettyJs("for()")).toEqual("for ()");
+            });
+            it("removes a space", function () {
+                expect(prettyJs("for ()", {
+                    noSpaceAfterFor: true
+                })).toEqual("for()");
+            });
+        });
+        describe('noSpaceAfterFunction', function () {
+            it('adds a space by default', function () {
+                expect(prettyJs("function()")).toEqual("function ()");
+            });
+            it("removes a space", function () {
+                expect(prettyJs("function ()", {
+                    noSpaceAfterFunction: true
+                })).toEqual("function()");
+            });
+        });
+        describe('noSpaceAfterSwitch', function () {
+            it('adds a space by default', function () {
+                expect(prettyJs("switch()")).toEqual("switch ()");
+            });
+            it("removes a space", function () {
+                expect(prettyJs("switch ()", {
+                    noSpaceAfterSwitch: true
+                })).toEqual("switch()");
+            });
+        });
         describe('quoteProperties', function () {
             it('can unquote properties', function () {
                 expect(prettyJs("{'a':1,\"b\":2}", {

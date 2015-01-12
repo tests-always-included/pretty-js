@@ -155,6 +155,34 @@ This is the string to use for newlines.
 Defaults to `"\n"` (Mac/Unix/Linux style).
 
 
+### noSpaceAfterIf (boolean)
+
+Enabling this option removes the space that would appear in `if (`.
+
+Defaults to false.
+
+
+### noSpaceAfterFor (boolean)
+
+Enabling this option removes the space that would appear in `for (`.
+
+Defaults to false.
+
+
+### noSpaceAfterFunction (boolean)
+
+Enabling this option removes the space that would appear in `function (`.  Please note that this is only applied for anonymous functions, not named functions.
+
+Defaults to false.
+
+
+### noSpaceAfterSwitch (boolean)
+
+Enabling this option removes the space that would appear in `switch (`.
+
+Defaults to false.
+
+
 ### quoteProperties (boolean or null)
 
 Wrap object properties in quotes or remove them.
@@ -164,6 +192,7 @@ Wrap object properties in quotes or remove them.
 * `null`: Keep quoted properties quoted and unquoted properties unquoted
 
 Defaults to false.
+
 
 ### trailingNewline (boolean)
 
