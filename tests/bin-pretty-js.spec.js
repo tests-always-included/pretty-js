@@ -141,6 +141,16 @@
             argumentRunner('--jslint --json', 'jslint: false');
             argumentRunner('--quote-properties=remove --json', 'quoteProperties: true');
         });
+        describe('noSpaceAfter', function () {
+            argumentRunner('', 'noSpaceAfterIf: false');
+            argumentRunner('', 'noSpaceAfterFor: false');
+            argumentRunner('', 'noSpaceAfterFunction: false');
+            argumentRunner('', 'noSpaceAfterSwitch: false');
+            argumentRunner('--no-space-after=if', 'noSpaceAfterIf: true');
+            argumentRunner('--no-space-after=FOR', 'noSpaceAfterFor: true');
+            argumentRunner('--no-space-after=Function', 'noSpaceAfterFunction: true');
+            argumentRunner('--no-space-after=SwItCh', 'noSpaceAfterSwitch: true');
+        });
         describe('newline', function () {
             argumentRunner('', 'newline: \'\\n\'');
             argumentRunner('--newline "crlf"', 'newline: \'\\r\\n\'');

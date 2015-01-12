@@ -31,6 +31,10 @@ options = {
     inPlace: false,
     jslint: false,
     newline: "\n",
+    noSpaceAfterIf: false,
+    noSpaceAfterFor: false,
+    noSpaceAfterFunction: false,
+    noSpaceAfterSwitch: false,
     quoteProperties: false,
     trailingNewline: false,
     verbose: false
@@ -132,17 +136,44 @@ parser.addOption('n', 'newline', 'What to use for newlines.  Must be one of "cr"
         }
     })
     .action(function (value) {
-        switch (value.toUpperCase()) {
-        case 'CR':
+        switch (value.toLowerCase()) {
+        case 'cr':
             options.newline = '\r';
             break;
 
-        case 'LF':
+        case 'lf':
             options.newline = '\n';
             break;
 
-        case 'CRLF':
+        case 'crlf':
             options.newline = '\r\n';
+            break;
+        }
+    });
+
+parser.addOption(null, 'no-space-after', 'Prevent the beautifier from adding a space after a keyword.  Must specify "if", "for", "function" or "switch".')
+    .argument("KEYWORD")
+    .validation(function (value) {
+        if (!value.match(/^(if|for|function|switch)$/i)) {
+            return 'Must choose if, for, function or switch.';
+        }
+    })
+    .action(function (value) {
+        switch (value.toLowerCase()) {
+        case 'if':
+            options.noSpaceAfterIf = true;
+            break;
+
+        case 'for':
+            options.noSpaceAfterFor = true;
+            break;
+
+        case 'function':
+            options.noSpaceAfterFunction = true;
+            break;
+
+        case 'switch':
+            options.noSpaceAfterSwitch = true;
             break;
         }
     });
