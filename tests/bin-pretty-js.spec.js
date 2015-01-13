@@ -151,6 +151,10 @@
             argumentRunner('--no-space-after=Function', 'noSpaceAfterFunction: true');
             argumentRunner('--no-space-after=SwItCh', 'noSpaceAfterSwitch: true');
         });
+        describe('noSpaceWithIncDec', function () {
+            argumentRunner('', 'noSpaceWithIncDec: false');
+            argumentRunner('--no-space-with-inc-dec', 'noSpaceWithIncDec: true');
+        });
         describe('newline', function () {
             argumentRunner('', 'newline: \'\\n\'');
             argumentRunner('--newline "crlf"', 'newline: \'\\r\\n\'');

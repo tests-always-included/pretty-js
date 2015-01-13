@@ -35,6 +35,7 @@ options = {
     noSpaceAfterFor: false,
     noSpaceAfterFunction: false,
     noSpaceAfterSwitch: false,
+    noSpaceWithIncDec: false,
     quoteProperties: false,
     trailingNewline: false,
     verbose: false
@@ -178,7 +179,7 @@ parser.addOption(null, 'no-space-after', 'Prevent the beautifier from adding a s
         }
     });
 
-parser.addOption(null, 'no-space-with-incdec', 'Prevent the addition of a space between an identifier and ++ or --.')
+parser.addOption(null, 'no-space-with-inc-dec', 'Prevent the addition of a space between an identifier and ++ or --.')
     .action(function () {
         options.noSpaceWithIncDec = true;
     });
