@@ -178,6 +178,11 @@ parser.addOption(null, 'no-space-after', 'Prevent the beautifier from adding a s
         }
     });
 
+parser.addOption(null, 'no-space-with-incdec', 'Prevent the addition of a space between an identifier and ++ or --.')
+    .action(function () {
+        options.noSpaceWithIncDec = true;
+    });
+
 parser.addOption('q', 'quote-properties', 'How should object literals list their properties?  "add" will always add quotes, "remove" removes unnecessary quoting and "preserve" keeps properties as-is.  For JSON you want "add" in order to correct common quoting errors.  Default is "remove".')
     .argument('ACTION')
     .validation(function (value) {

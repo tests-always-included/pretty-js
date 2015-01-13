@@ -183,6 +183,13 @@ Enabling this option removes the space that would appear in `switch (`.
 Defaults to false.
 
 
+### noSpaceWithIncDec (boolean)
+
+Enable this option to remove the space between an identifier and the ++ or --.
+
+Defaults to false.
+
+
 ### quoteProperties (boolean or null)
 
 Wrap object properties in quotes or remove them.

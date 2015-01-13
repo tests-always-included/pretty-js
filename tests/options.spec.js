@@ -180,6 +180,16 @@
                 })).toEqual("switch()");
             });
         });
+        describe('noSpaceWithIncDec', function () {
+            it('adds a space by default', function () {
+                expect(prettyJs('a++;--b')).toEqual('a ++;\n-- b');
+            });
+            it('removes a space', function () {
+                expect(prettyJs('a ++;\n-- b', {
+                    noSpaceWithIncDec: true
+                })).toEqual('a++;\n--b');
+            });
+        });
         describe('quoteProperties', function () {
             it('can unquote properties', function () {
                 expect(prettyJs("{'a':1,\"b\":2}", {
