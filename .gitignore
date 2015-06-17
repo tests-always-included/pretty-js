@@ -19,6 +19,8 @@ $*
 .settings*
 .metadata/
 nbproject/
+/Session.vim
+.*.sw?
 
 # Generated
 /node_modules/
