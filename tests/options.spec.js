@@ -190,6 +190,16 @@
                 })).toEqual('a++;\n--b');
             });
         });
+        describe('noNewlineBetweenVar', function () {
+            it('adds an extra newline by default', function () {
+                expect(prettyJs('var a; var b; var c;')).toEqual('var a;\n\nvar b;\n\nvar c;');
+            });
+            it('removes extra newlines', function () {
+                expect(prettyJs('var a; var b; var c;', {
+                    noNewlineBetweenVar: true
+                })).toEqual('var a;\nvar b;\nvar c;');
+            });
+        });
         describe('quoteProperties', function () {
             it('can unquote properties', function () {
                 expect(prettyJs("{'a':1,\"b\":2}", {

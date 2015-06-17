@@ -155,6 +155,10 @@
             argumentRunner('', 'noSpaceWithIncDec: false');
             argumentRunner('--no-space-with-inc-dec', 'noSpaceWithIncDec: true');
         });
+        describe('noNewlineBetweenVar', function () {
+            argumentRunner('', 'noNewlineBetweenVar: false');
+            argumentRunner('--no-newline-between-var', 'noNewlineBetweenVar: true');
+        });
         describe('newline', function () {
             argumentRunner('', 'newline: \'\\n\'');
             argumentRunner('--newline "crlf"', 'newline: \'\\r\\n\'');
