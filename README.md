@@ -3,10 +3,10 @@ PrettyJS
 
 Beautify / pretty print JavaScript and JSON.  Turn really ugly and poorly indented files into masterpieces.
 
-[![NPM][npm-image]][NPM]
-[![Build Status][travis-image]][Travis CI]
-[![Dependencies][dependencies-image]][Dependencies]
-[![Dev Dependencies][devdependencies-image]][Dev Dependencies]
+[![npm version][npm-badge]][npm-link]
+[![Build Status][travis-badge]][travis-link]
+[![Dependencies][dependencies-badge]][dependencies-link]
+[![Dev Dependencies][devdependencies-badge]][devdependencies-link]
 
 
 Requirements
@@ -228,13 +228,13 @@ This software is licensed under an [MIT license with an additional non-advertisi
 [Browserify]: http://browserify.org/
 [Complexion]: https://github.com/tests-always-included/complexion
 [ComplexionJS]: https://github.com/tests-always-included/complexion-js
-[Dev Dependencies]: https://david-dm.org/tests-always-included/pretty-js#info=devDependencies
-[devdependencies-image]: https://david-dm.org/tests-always-included/pretty-js/dev-status.png
-[Dependencies]: https://david-dm.org/tests-always-included/pretty-js
-[dependencies-image]: https://david-dm.org/tests-always-included/pretty-js.png
+[dependencies-badge]: https://img.shields.io/david/tests-always-included/pretty-js.svg
+[dependencies-link]: https://david-dm.org/tests-always-included/pretty-js
+[devdependencies-badge]: https://img.shields.io/david/dev/tests-always-included/pretty-js.svg
+[devdependencies-link]: https://david-dm.org/tests-always-included/pretty-js#info=devDependencies
 [es5-shim]: https://github.com/es-shims/es5-shim
-[NPM]: https://npmjs.org/package/pretty-js
-[npm-image]: https://nodei.co/npm/pretty-js.png?downloads=true&stars=true
+[npm-badge]: https://img.shields.io/npm/v/pretty-js.svg
+[npm-link]: https://npmjs.org/package/pretty-js
 [processFiles]: https://github.com/tests-always-included/process-files
-[travis-image]: https://secure.travis-ci.org/tests-always-included/pretty-js.png
-[Travis CI]: http://travis-ci.org/tests-always-included/pretty-js
+[travis-badge]: https://img.shields.io/travis/tests-always-included/pretty-js/master.svg
+[travis-link]: http://travis-ci.org/tests-always-included/pretty-js
