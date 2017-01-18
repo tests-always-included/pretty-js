@@ -183,6 +183,13 @@ Enabling this option removes the space that would appear in `switch (`.
 Defaults to false.
 
 
+### noNewlineBetweenVar (boolean)
+
+Enable this option to disable the double newlines between var statements. The last var in a group will still be followed by a blank line.
+
+Defaults to false.
+
+
 ### noSpaceWithIncDec (boolean)
 
 Enable this option to remove the space between an identifier and the ++ or --.
