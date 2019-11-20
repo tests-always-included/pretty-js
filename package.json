@@ -30,7 +30,7 @@
         "process-files": "^1.0.0"
     },
     "devDependencies": {
-        "eslint": "^6.6.0",
+        "eslint": "^4.18.2",
         "fid-umd": "^2.0.5",
         "jasmine": "^3.5.0"
     },
