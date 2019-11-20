@@ -1,6 +1,6 @@
 {
     "name": "pretty-js",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "Beautify / pretty print JavaScript and JSON",
     "author": "Tyler Akins <fidian@rumkin.com>",
     "homepage": "https://github.com/tests-always-included/pretty-js",
@@ -24,15 +24,15 @@
         "js"
     ],
     "dependencies": {
-        "complexion": "^0.2.0",
-        "complexion-js": "^0.2.0",
+        "complexion": "^0.2.1",
+        "complexion-js": "^0.2.1",
         "option-parser": "^1.0.0",
         "process-files": "^1.0.0"
     },
     "devDependencies": {
-        "eslint": "^4.3.0",
+        "eslint": "^6.6.0",
         "fid-umd": "^2.0.5",
-        "jasmine": "^2.6.0"
+        "jasmine": "^3.5.0"
     },
     "license": "MIT",
     "scripts": {
