@@ -81,7 +81,7 @@ describe("bin/pretty-js.js", function () {
         argumentRunner("", "debug: 1");
         argumentRunner("", /^Options /);
         argumentRunner("-d", "debug: 2");
-        argumentRunner("-d", /^[0-9]+ 'Options' /);
+        argumentRunner("-d", /^[0-9]+ '?Options'? /);
     });
     describe("elseNewline", function () {
         argumentRunner("", "elseNewline: false");
