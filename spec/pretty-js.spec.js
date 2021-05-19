@@ -255,7 +255,6 @@ describe("prettyJs", function () {
             })).toEqual("\"\\\\'\\\"'\\\"'\\\"'\"");
         });
         it("converts to double quotes with escaping", function () {
-            /* global console*/
             expect(prettyJs("\"\\\\\\\"'\\\"'\\\"'\\\"\"", {
                 convertStrings: "single"
             })).toEqual("'\\\\\"\\'\"\\'\"\\'\"'");
